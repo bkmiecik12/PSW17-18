@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+
+  <title>Recenzje filmów - Wypełnij formularz</title>
+  <meta name="description" content="Recenzje filmów">
+  <meta name="keywords" content="Film, ranking, recenzja, premiery">
+
+  <!--aaa-->
+</head>
+
+<body>
+  <h1>Recenzje filmów</h1>
+  <p>Witaj na naszej witrynie! Tutaj ocenisz każdy film</p>
+  <nav>
+	<ul>
+	<li><a href="index.html">Start</a></li>
+	<li><a href="ranking.html">Ranking filmów</a></li>
+	<li><a href="najnowsze.html">Najnowsze recezje</a></li>
+	<li><a href="dodaj.html">Dodaj recenzję</a></li>
+	</ul>
+  </nav>
+	
+	<form method = "post" action = "formularzdod.html" autocomplete="on">
+	<p><label>Imię:
+ 	<input name = "name" type = "text" size = "20" autofocus>
+	</label>Tekst do 20 znaków</p>
+ 
+  <p><label>Nazwisko:
+ 	<input name = "nazwisko" type = "text" size = "20" required>
+ </label>Tekst do 20 znaków</p>
+ 
+ <p><label>Miesiąc urodzin:
+ <input list="miesiac">
+<datalist id="miesiac">
+	<option value="Styczen">
+	<option value="Luty">
+	<option value="Marzec">
+	<option value="Kwiecen">
+	<option value="Maj">
+	<option value="Czerwiec">
+	<option value="Lipiec">
+	<option value="Sierpien">
+	<option value="Wrzesien">
+	<option value="Pazdziernik">
+	<option value="Listopad">
+	<option value="Grudzien">
+</datalist>
+</label>Lista wybieralna</p>
+
+<p><label>Email:
+ 	<input name = "email" type = "email" size = "20" required>
+ </label>Zgodnie ze wzorem adresu email</p>
+ 
+ <p><label>Telefon:
+ 	<input name = "telefon" type = "tel" size = "20" pattern="\d{3}[\-]\d{3}[\-]\d{3}">
+ </label>Zgodnie ze wzorem numeru telefonu (XXX-XXX-XXX)</p>
+	
+<p>
+ <input type = "submit" value = "Wyślij">
+ <input type = "reset" value = "Wyczyść">
+</p>
+ </form>
+</body>
+</html>
