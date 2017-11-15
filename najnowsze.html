@@ -2,17 +2,73 @@
 <html lang="pl">
 <head>
   <meta charset="utf-8">
-
   <title>Recenzje filmów - najnowsze</title>
   <meta name="description" content="Recenzje filmów">
   <meta name="keywords" content="Film, ranking, recenzja, premiery">
+  
+  <link rel = "stylesheet" type = "text/css" href = "style/styles.css">
+  
+  <script src="js/dom3.js"></script>
+  
+  <style type = "text/css">
+			@-webkit-keyframes napis
+			{
+				from {color: purple;}
+				to {color: green;}
+			}
+			@-moz-keyframes napis
+			{
+				from {color: purple;}
+				to {color: green;}
+			}
+			@-o-keyframes napis
+			{
+				from {color: purple;}
+				to {color: green;}
+			}
+			@-ms-keyframes napis
+			{
+				from {color: purple;}
+				to {color: green;}
+			}
+			h2
+			{ font-weight: bold;
+				-webkit-animation-name: napis;
+				-webkit-animation-duration: 2s;
+				-webkit-animation-iteration-count: infinite;
+				-moz-animation-name: napis;
+				-moz-animation-duration: 2s;
+				-moz-animation-iteration-count: infinite;
+				-o-animation-name: napis;
+				-o-animation-duration: 2s;
+				-o-animation-iteration-count: infinite;
+				-ms-animation-name: napis;
+				-ms-animation-duration: 2s;
+				-ms-animation-iteration-count: infinite;
+				font-variant: small-caps;
+				font-size:30px;
+				background: linear-gradient(#4169E1, #B0E0E6);				
+			}
+			aside
+			{ font-style:italic;
+					font-size:1.2em; }
+			p	
+			{ font-size: 13pt;
+				font-family: sans-serif; }
+			footer
+			{
+				font-size:90%;}
+			.special { color: purple; }
+</style>
 
   <!--aaa-->
 </head>
 
 <body>
+<div id='topmain'>
   <h1>Recenzje filmów</h1>
   <p>Witaj na naszej witrynie! Tutaj ocenisz każdy film</p>
+  </div>
   <nav>
   <ul>
   <li><a href="index.html">Start</a></li>
@@ -22,9 +78,28 @@
 	</ul>
 	</nav>
 
+  Kolor tła:<select onchange="changeBackground(this);" id="tlo" name="tlo">
+	<option selected>#ddd</option>
+    <option>lightblue</option>
+	<option>yellow</option>
+	<option>white</option>
+  </select>
+  Kolor czcionki:<select onchange="changeText(this);" id="tekst" name="tekst">
+	<option selected>black</option>
+    <option>red</option>
+	<option>yellow</option>
+	<option>green</option>
+  </select>
+  Rodzaj czcionki:<select onchange="changeFont(this);" id="czcionka" name="czcionka">
+	<option selected>Times New Roman</option>
+    <option>Arial</option>
+	<option>Impact</option>
+	<option>Courier New</option>
+  </select>	
+	
   <nav>
   <ul style="list-style-type:square">
-  	<li><mark>Polskie</mark>
+  	<li style="border: 40px solid; margin: 20px;border-image-source: url(img/polska.jpg);border-image-repeat: repeat;border-image-slice: 9"><mark>Polskie</mark>
 		<nav>
 			<ol>
 				<li><a href="#pokot">Pokot</a></li>
@@ -34,7 +109,7 @@
 			</ol>
 		</nav>
 	</li>
-  	<li><mark>Zagraniczne</mark>
+  	<li style="border: 40px solid; margin: 20px;border-image-source: url(img/swiat.png);border-image-slice: 40"><mark>Zagraniczne</mark>
 		<nav>
 			<ol>
 				<li><a href="#zjawa">Zjawa</a></li>
@@ -57,7 +132,7 @@
 Holland przygląda się polskiej. "Pokot" zabiera nas do małej miejscowości w Kotlinie Kłodzkiej, gdzie ciągle jest problem z zasięgiem sieci telefonii komórkowej. Życie toczy się tam powoli, dość prosto i jednostajnie. Jest biednie i ciasno, przed młodymi nie widać szczególnie zachęcających perspektyw. Okolicą rządzi grupa wpływowych mężczyzn: Prezes, właściciel lisiej fermy, ksiądz, komendant policji. Wszystkich łączy wspólny rytuał polowania. Przez cały rok, zimą, latem, wiosną i jesienią, przeczesują otaczające Kotlinę lasy, przetrzebiając obficie zamieszkującą je zwierzynę. 
   </p>
   <aside>
-	<p>Agnieszka Holland (ur. 28 listopada 1948 w Warszawie) – polska reżyserka filmowa i teatralna, scenarzystka filmowa i aktorka, od 1981 mieszka za granicą, od 2008 we Francji.</p>
+	Agnieszka Holland (ur. 28 listopada 1948 w Warszawie) – polska reżyserka filmowa i teatralna, scenarzystka filmowa i aktorka, od 1981 mieszka za granicą, od 2008 we Francji.
   </aside>
   <footer>
 		Autor: <address>Jan Kowalski (jan.kowalski@wp.pl)</address>
@@ -121,7 +196,7 @@ Holland przygląda się polskiej. "Pokot" zabiera nas do małej miejscowości w 
   
   </p>
   <aside>
-	<p>Alejandro González Iñárritu (ur. 15 sierpnia 1963 w mieście Meksyk) – meksykański reżyser, scenarzysta i producent filmowy. Od 2014 roku występuje jako Alejandro G. Iñárritu. W 2007 roku za film Babel Iñárritu jako pierwszy meksykański reżyser został nominowany do Oscara za najlepszą reżyserię, z kolei osiem lat później na 87. ceremonii rozdania Oscarów za film Birdman otrzymał trzy statuetki – dla najlepszego filmu, najlepszego reżysera i najlepszego scenariuszu oryginalnego.</p>
+	Alejandro González Iñárritu (ur. 15 sierpnia 1963 w mieście Meksyk) – meksykański reżyser, scenarzysta i producent filmowy. Od 2014 roku występuje jako Alejandro G. Iñárritu. W 2007 roku za film Babel Iñárritu jako pierwszy meksykański reżyser został nominowany do Oscara za najlepszą reżyserię, z kolei osiem lat później na 87. ceremonii rozdania Oscarów za film Birdman otrzymał trzy statuetki – dla najlepszego filmu, najlepszego reżysera i najlepszego scenariuszu oryginalnego.
   </aside>
   <footer>
 		Autor: <address>Marek Mareczek (marek.mareczek@wp.pl)</address>
@@ -142,8 +217,6 @@ Holland przygląda się polskiej. "Pokot" zabiera nas do małej miejscowości w 
   <h3 id="blade"><mark>Blade Runner 2049</mark></h3>
   
   <p>
-  </article>
-  <article>
   Jakiego koloru oczy miała Rachael? Jest taki moment w "Blade Runnerze 2049", że wypływa owa kwestia i jest to jeden z tych fabularnych "punktów bez powrotu" - wiecie, o czym mowa. Na usta cisną się pytania: jak ma się kopia do oryginału, jak ma się pamięć do rzeczywistości, co jest prawdą, a co kłamstwem? Przed dylematem stoi zaś nie tylko Rick Deckard, ale i Denis Villeneuve. Problem z podejmowaniem rzuconej przez Ridleya Scotta rękawicy jest bowiem taki, że każdy ma swojego "Blade Runnera". Oryginał przecież w pewnym sensie nie istnieje, a dokładniej: istnieje wielokrotnie. I w tym część jego uroku. "Łowca androidów", przemontowywany, przeinterpretowywany, rozmultimedializowany w gąszczu literackich pierwowzorów i kontynuacji, pecetowych spin-offów i alternatywnych soundtracków, przypomina przecież bardziej filmowy palimpsest niż filmową opokę. To film po Dickowsku migotliwy, film z tajemnicą; piękna katastrofa, której niedoskonałości sumują się jakimś cudem w arcydzieło. Weź tu, panie, kręć sequel. 
   
   </p>

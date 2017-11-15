@@ -6,13 +6,20 @@
   <title>Recenzje filmów - Dodaj recenzję</title>
   <meta name="description" content="Recenzje filmów">
   <meta name="keywords" content="Film, ranking, recenzja, premiery">
+  <link rel = "stylesheet" type = "text/css" href = "style/styles.css">
+  
+  <script src="js/dom3.js"></script>
+  
+  <script src="js/dom5.js"></script>
 
   <!--aaa-->
 </head>
 
 <body>
+<div id='topmain'>
   <h1>Recenzje filmów</h1>
   <p>Witaj na naszej witrynie! Tutaj ocenisz każdy film</p>
+  </div>
   <nav>
   <ul>
   <li><a href="index.html">Start</a></li>
@@ -21,42 +28,61 @@
   <li><a href="formularz.html">Dołącz do grona kinomaniaków !</a></li>
 	</ul>
 	</nav>
+
+  Kolor tła:<select onchange="changeBackground(this);" id="tlo" name="tlo">
+	<option selected>#ddd</option>
+    <option>lightblue</option>
+	<option>yellow</option>
+	<option>white</option>
+  </select>
+  Kolor czcionki:<select onchange="changeText(this);" id="tekst" name="tekst">
+	<option selected>black</option>
+    <option>red</option>
+	<option>yellow</option>
+	<option>green</option>
+  </select>
+  Rodzaj czcionki:<select onchange="changeFont(this);" id="czcionka" name="czcionka">
+	<option selected>Times New Roman</option>
+    <option>Arial</option>
+	<option>Impact</option>
+	<option>Courier New</option>
+  </select>
 	
-	<form method = "post" action = "#">
+	<form method = "post" action = "new_review.php">
 
  <p><label>Użytkownik:
- 	<input name = "user" type = "text" size = "30">
+ 	<input id="user" name = "user" type = "text" size = "30">
  </label></p>
  
  <p><label>Tytuł filmu:
- 	<input name = "title" type = "text" size = "30">
+ 	<input id="title" name = "title" type = "text" size = "30">
  </label></p>
 
  <p><label>Treść recenzji:
  
- <textarea name = "review" cols="25" rows="6"></textarea>
+ <textarea id="review" name = "review" cols="25" rows="6"></textarea>
 
 
  </label></p>
  <p>
  <strong>Kategorie:</strong><br>
  			<label>Dramat
-			<input name = "category" type = "checkbox"
+			<input class="category" name = "category" type = "checkbox"
 				value = "Dramat"></label>
 			<label>Komedia
-			<input name = "category" type = "checkbox"
+			<input class="category" name = "category" type = "checkbox"
 				value = "Komedia"></label>
 			<label>Horror
-			<input name = "category" type = "checkbox"
+			<input class="category" name = "category" type = "checkbox"
 				value = "Horror"></label>
 			<label>Thriller
-			<input name = "category" type = "checkbox"
+			<input class="category" name = "category" type = "checkbox"
 				value = "Thriller"></label>
 			<label>Film akcji
-			<input name = "category" type = "checkbox"
+			<input class="category" name = "category" type = "checkbox"
 				value = "Film akcji"></label>
 			<label>Familijny
-			<input name = "category" type = "checkbox"
+			<input class="category" name = "category" type = "checkbox"
 				value = "Familijny"></label>
  
  </p>
@@ -65,16 +91,16 @@
  <label>Zapisać w moich recenzjach?</label>
  
  <label>Tak
- <input name = "save" type = "radio"
+ <input class="ifSave" name = "save" type = "radio"
  	value = "yes" checked></label>
  
  <label>Nie
- <input name = "save" type = "radio" value = "no"/></label>
+ <input class="ifSave" name = "save" type = "radio" value = "no"/></label>
  </p>
 
  <p>
  <label>Oceń film:
-		<select name = "rating">
+		<select id="ocena" name = "rating">
 			<option selected>10</option>
 			<option>9</option>
 			<option>8</option>
@@ -89,9 +115,11 @@
  </label>
  </p>
 
+ <p id="help"></p>
+ 
  <p>
- <input type = "submit" value = "Wyślij">
- <input type = "reset" value = "Wyczyść">
+ <input id="submit" type = "submit" value = "Wyślij" onclick="return confirm_send();">
+ <input id="reset" type = "reset" value = "Wyczyść" onclick="return confirm_reset();">
  </p>
  </form>
 	

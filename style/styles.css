@@ -1,0 +1,141 @@
+body
+{
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-color: #ddd;
+	margin:10px 10px;
+	padding: 5px;
+}
+
+article, p:empty
+{
+	width:70%;
+	align:center
+}
+
+ul>li>a,ul>li>a:visited,ul>li>a:link
+{
+	color:black;
+	transition: font-size 1s;
+}
+
+ul>li>a:hover
+{
+	color:#aaffaa;
+	background:black;
+	font-size: 200%;
+}
+
+summary
+{
+	border-width:1px;
+	border-style: solid;
+	border-color:black;
+}
+
+p i:first-child 
+{
+    color: blue;
+}
+input:checked
+{
+	color:green;
+}
+p:first-of-type
+{
+	background: #22dddd;
+}
+
+section article p:nth-child(2)
+{
+	font-style: oblique;
+}
+
+table, th, td 
+{
+   border: 1px solid black;
+}
+
+tr:hover
+{
+	background-color: #f5f5f5;
+}
+
+@media print
+{
+	body { background-color: white; }
+	h1
+		{ color: seagreen; }
+	p
+		{ font-size: 14pt;
+	color: steelblue;
+	font-family: "times new roman", times, serif; 
+}
+}
+@font-face {
+    font-family: 'Chivo';
+    src: url(http://themes.googleusercontent.com/static/fonts/chivo/v4/uOXSiKkEygwkvR4cgUzOz_esZW2xOQ-xsNqO47m55DA.woff) format('woff');
+}
+h1
+{
+	text-shadow: 2px 2px green;
+}
+#topmain
+{
+	display: inline-block;
+    border: 2px solid;
+    border-radius: 20px;
+	border-color: blue;
+	box-shadow: 5px 5px #87CEFA;
+	background: radial-gradient(#0000FF,#1E90FF,#B0E0E6);
+}
+#topmain
+{
+	transition: transform 1s;
+}
+#topmain>p
+{
+	font-family: 'Chivo';
+	font-size: 150%;
+}
+#topmain:active
+{
+	-webkit-transform: translateY(100%) translateX(50%) rotate(360deg);
+	-moz-transform: translateY(100%) translateX(50%) rotate(360deg);
+	-o-transform: translateY(100%) translateX(50%) rotate(360deg);
+	-ms-transform: translateY(100%) translateX(50%) rotate(360deg);
+	transform: translateY(100%) translateX(50%) rotate(360deg);
+}
+nav>ul>li:first-child
+{
+	background-color: rgba(0, 0, 255, 0.1);
+}
+nav>ul>li:nth-child(2)
+{
+	background-color: rgba(0, 0, 255, 0.2);
+}
+nav>ul>li:nth-child(3)
+{
+	background-color: rgba(0, 0, 255, 0.3);
+}
+nav>ul>li:nth-child(4)
+{
+	background-color: rgba(0, 0, 255, 0.4);
+}
+nav>ul>li>nav>ol>li:first-child
+{
+	background-color: hsl(180, 100%, 40%);
+}
+nav>ul>li>nav>ol>li:nth-child(2)
+{
+	background-color: hsl(180, 100%, 60%);
+}
+nav>ul>li>nav>ol>li:nth-child(3)
+{
+	background-color: hsl(180, 100%, 80%);
+}
+nav>ul>li>nav>ol>li:nth-child(4)
+{
+	background-color: hsl(180, 100%, 90%);
+}

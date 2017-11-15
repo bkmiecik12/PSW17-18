@@ -6,13 +6,68 @@
   <title>Recenzje filmów</title>
   <meta name="description" content="Recenzje filmów">
   <meta name="keywords" content="Film, ranking, recenzja, premiery">
+  <link rel = "stylesheet" type = "text/css" href = "style/styles.css">
+  
+  <script src="js/dom3.js"></script>
+ 
+<style type="text/css">
+#outer
+{
+    width:100%;
+    text-align: center;
+}
+.inner
+{
+	float: left;
+    display: inline-block;
+}
+</style>
+ 
+<script src="js/dom1.js"></script>
+
+<script src="js/dom2.js"></script>
+
+<script src="js/dom3.js"></script>
+
+<script src="js/dom4.js"></script>
+
+<script type = "text/javascript">
+
+function start(){
+	var button = document.getElementById("button");
+
+	if(button){
+		button.addEventListener('click',pokaz);
+	}
+}
+
+function pokaz(){
+
+	var notes = document.getElementsByClassName("ocena");
+	for(var i = 0; i < notes.length; i++)
+	{
+		var n = Math.random();
+		n += " ";
+
+		if(i==6) notes.item(i).innerHTML = Math.floor(9-i+Math.random()+parseInt(n)).toFixed(2);
+		else
+		   notes.item(i).innerHTML = (9-i+Math.random()+parseFloat(n)).toFixed(2);
+		   
+		notes.item(i).style.textAlign="center";
+	}
+}
+
+window.addEventListener("load", start);
+</script>
 
   <!--aaa-->
 </head>
 
-<body>
+<body onmousemove="isKeyPressed(event)" onkeydown="keyCode(event)">
+<div id='topmain'>
   <h1>Recenzje filmów</h1>
   <p>Witaj na naszej witrynie! Tutaj ocenisz każdy film</p>
+  </div>
   <nav>
   <ul>
   	<li><a href="index.html">Start</a></li>
@@ -21,13 +76,56 @@
 	<li><a href="formularz.html">Dołącz do grona kinomaniaków !</a></li>
 	</ul>
 	</nav>
-	
-	
-	<table border="1">
+
+  Kolor tła:<select onchange="changeBackground(this);" id="tlo" name="tlo">
+	<option selected>#ddd</option>
+    <option>lightblue</option>
+	<option>yellow</option>
+	<option>white</option>
+  </select>
+  Kolor czcionki:<select onchange="changeText(this);" id="tekst" name="tekst">
+	<option selected>black</option>
+    <option>red</option>
+	<option>yellow</option>
+	<option>green</option>
+  </select>
+  Rodzaj czcionki:<select onchange="changeFont(this);" id="czcionka" name="czcionka">
+	<option selected>Times New Roman</option>
+    <option>Arial</option>
+	<option>Impact</option>
+	<option>Courier New</option>
+  </select>
+ 
+<h2>Ranking filmów</h2>
+<input id="button" type="submit" value="Pokaż oceny"/><p id="test"></p>
+<input type="submit" value="Pokaż statystyki" onclick="showStats()"/>
+<p id="images"></p>
+<p id="links"></p>
+<p id="best"></p>
+<form>Ulubiony film: <input type="text" name="ulubionyfilm"></form>
+<br>
+<form id="ocena">Twoja ocena: <input type="text" name="twojaocena" min="0" max="10" maxlength="2" size="2"></form>
+<br>
+<input type="submit" value="Bez oceny" onclick="modifyForms()"/><p id="test"></p>
+<div id="outer">
+	 <div class="inner"><input type="submit" value="Dodaj kolejny" onclick="addNext()"/></div>
+	 <div class="inner"><input type="submit" value="Dodaj pierwszy" onclick="addFirst()"/></div>
+	 <div class="inner"><input type="submit" value="Zamień ostatni" onclick="changeLast()"/></div>
+	 <div class="inner"><input type="submit" value="Usuń ostatni" onclick="deleteLast()"/></div>
+	 <div class="inner"><input type="submit" value="Usuń przyciski" onclick="deleteButtons()"/></div>
+</div>
+<br>
+	<ul id='lista'>
+	</ul>
+	<p>Przytrzymaj przycisk i poruszaj kursorem, aby zmienić rozmiar okładek: ctrl (małe), alt (średnie), shift (duże).</p>
+	<p>Naciśnij przycisk "k", aby zobaczyć ile lat mineło od wydania.</p>
+	<p id="wspolrzedne"></p>
+	<table id='tabela' border="1">
  		<thead>
   		<tr>
      		<th>Lp.</th>
      		<th colspan="3">Film</th>
+		<th>Ocena</th>
   		</tr>
  		</thead>
  		<tbody>
@@ -43,7 +141,9 @@
      		<td><a target="_blank" 
      					href="http://www.imdb.com/title/tt0111161/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=2398042102&pf_rd_r=1MHW4ZF4FQKF3BJ380CT&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=top&ref_=chttp_tt_1">
      			Skazani na Shawshank</a></td>
-     		<td>1994</td>
+     		<td class="rok">1994</td>
+		<td class="ocena"></td>
+		
   		</tr>
   		
   		
@@ -62,7 +162,8 @@
      		<td><a href="http://www.imdb.com/title/tt0068646/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=2398042102&pf_rd_r=1MHW4ZF4FQKF3BJ380CT&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=top&ref_=chttp_tt_2"
      			 target="_blank" >
      			Ojciec chrzestny</a></td>
-     		<td>1972</td>
+     		<td class="rok">1972</td>
+		<td class="ocena"></td>
   		</tr>
   		
   		<tr>
@@ -80,7 +181,8 @@
      		<td><a href="http://www.imdb.com/title/tt0071562/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=2398042102&pf_rd_r=0AFDZSJRC451MA1WXMB2&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=top&ref_=chttp_tt_3"
      			 target="_blank" >
      			Ojciec chrzestny II</a></td>
-     		<td>1974</td>
+     		<td class="rok">1974</td>
+		<td class="ocena"></td>
   		</tr>
   		
   		<tr>
@@ -98,7 +200,8 @@
      		<td><a href="http://www.imdb.com/title/tt0468569/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=2398042102&pf_rd_r=0AFDZSJRC451MA1WXMB2&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=top&ref_=chttp_tt_4"
      			 target="_blank" >
      			Mroczny Rycerz</a></td>
-     		<td>2008</td>
+     		<td class="rok">2008</td>
+		<td class="ocena"></td>
   		</tr>
   		
   		<tr>
@@ -116,8 +219,9 @@
      		<td><a href="http://www.imdb.com/title/tt0050083/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=2398042102&pf_rd_r=0AFDZSJRC451MA1WXMB2&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=top&ref_=chttp_tt_5"
      			 target="_blank" >
      			Dwunastu gniewnych ludzi</a></td>
-     		<td>1957</td>
-  		</tr>
+     		<td class="rok">1957</td>
+		<td class="ocena"></td>  		
+		</tr>
   		
   		<tr>
      		<td>6</td>
@@ -134,7 +238,8 @@
      		<td><a href="http://www.imdb.com/title/tt0108052/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=2398042102&pf_rd_r=0AFDZSJRC451MA1WXMB2&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=top&ref_=chttp_tt_6"
      			 target="_blank" >
      			Lista Schindlera</a></td>
-     		<td>1993</td>
+     		<td class="rok">1993</td>
+		<td class="ocena"></td>
   		</tr>
   		
   		<tr>
@@ -152,7 +257,8 @@
      		<td><a href="http://www.imdb.com/title/tt0110912/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=2398042102&pf_rd_r=0AFDZSJRC451MA1WXMB2&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=top&ref_=chttp_tt_7"
      			 target="_blank" >
      			Pulp Fiction</a></td>
-     		<td>1994</td>
+     		<td class="rok">1994</td>
+		<td class="ocena"></td>
   		</tr>
   		
   		<tr>
@@ -170,7 +276,8 @@
      		<td><a href="http://www.imdb.com/title/tt0167260/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=2398042102&pf_rd_r=0AFDZSJRC451MA1WXMB2&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=top&ref_=chttp_tt_8"
      			 target="_blank" >
      			Władca Pierścieni: Powrót króla</a></td>
-     		<td>2003</td>
+     		<td class="rok">2003</td>
+		<td class="ocena"></td>
   		</tr>
   		
   		<tr>
@@ -188,7 +295,8 @@
      		<td><a href="http://www.imdb.com/title/tt0060196/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=2398042102&pf_rd_r=0AFDZSJRC451MA1WXMB2&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=top&ref_=chttp_tt_9"
      			 target="_blank" >
      			Dobry, zły i brzydki</a></td>
-     		<td>1966</td>
+     		<td class="rok">1966</td>
+		<td class="ocena"></td>
   		</tr>
   		
   		
@@ -207,7 +315,8 @@
      		<td><a href="http://www.imdb.com/title/tt0137523/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=2398042102&pf_rd_r=0AFDZSJRC451MA1WXMB2&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=top&ref_=chttp_tt_10"
      			 target="_blank" >
      			Podziemny krąg</a></td>
-     		<td>1999</td>
+     		<td class="rok">1999</td>
+		<td class="ocena"></td>
   		</tr>
   		
   		
