@@ -48,7 +48,7 @@
 	<option>Courier New</option>
   </select>
 	
-	<form method = "post" action = "new_review.php">
+	<form method = "post" action = "newreview.php">
 
  <p><label>Użytkownik:
  	<input id="user" name = "user" type = "text" size = "30">
@@ -67,22 +67,22 @@
  <p>
  <strong>Kategorie:</strong><br>
  			<label>Dramat
-			<input class="category" name = "category" type = "checkbox"
+			<input class="category" name = "category[]" type = "checkbox"
 				value = "Dramat"></label>
 			<label>Komedia
-			<input class="category" name = "category" type = "checkbox"
+			<input class="category" name = "category[]" type = "checkbox"
 				value = "Komedia"></label>
 			<label>Horror
-			<input class="category" name = "category" type = "checkbox"
+			<input class="category" name = "category[]" type = "checkbox"
 				value = "Horror"></label>
 			<label>Thriller
-			<input class="category" name = "category" type = "checkbox"
+			<input class="category" name = "category[]" type = "checkbox"
 				value = "Thriller"></label>
 			<label>Film akcji
-			<input class="category" name = "category" type = "checkbox"
+			<input class="category" name = "category[]" type = "checkbox"
 				value = "Film akcji"></label>
 			<label>Familijny
-			<input class="category" name = "category" type = "checkbox"
+			<input class="category" name = "category[]" type = "checkbox"
 				value = "Familijny"></label>
  
  </p>
