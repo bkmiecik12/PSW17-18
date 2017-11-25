@@ -9,7 +9,7 @@
   <link rel = "stylesheet" type = "text/css" href = "style/styles.css">
   
   <script src="js/dom3.js"></script>
-
+  
   <!--aaa-->
 </head>
 
@@ -46,17 +46,17 @@
 	<option>Courier New</option>
   </select>
   
-	<form method = "post" action = "formularzdod.html" autocomplete="on">
+<form method = "post" action = "formularzAction.php" autocomplete="on">
 	<p><label>Imię:
- 	<input name = "name" type = "text" size = "20" autofocus>
+ 	<input name = "name" type = "text" value="Jan" autofocus>
 	</label>Tekst do 20 znaków</p>
  
   <p><label>Nazwisko:
- 	<input name = "nazwisko" type = "text" size = "20" required>
+ 	<input name = "nazwisko" type = "text" value="Kowalski" required>
  </label>Tekst do 20 znaków</p>
  
  <p><label>Miesiąc urodzin:
- <input list="miesiac">
+ <input list="miesiac" name="miesiac">
 <datalist id="miesiac">
 	<option value="Styczen">
 	<option value="Luty">
@@ -74,12 +74,22 @@
 </label>Lista wybieralna</p>
 
 <p><label>Email:
- 	<input name = "email" type = "email" size = "20" required>
+ 	<input name = "email" type = "email" size = "20" value="jan.kowalski@wp.pl" required>
  </label>Zgodnie ze wzorem adresu email</p>
  
  <p><label>Telefon:
- 	<input name = "telefon" type = "tel" size = "20" pattern="\d{3}[\-]\d{3}[\-]\d{3}">
+ 	<input name = "telefon" type = "tel" size = "20" value="666-666-666">
  </label>Zgodnie ze wzorem numeru telefonu (XXX-XXX-XXX)</p>
+ 
+ <p><label>Ulubione kultowe filmy (zaznacz conajmniej 2):<br>
+ <select multiple="yes" name="cult[]">
+  <option value="Pulp Fiction">Pulp Fiction</option>
+  <option value="Podziemny Krąg">Podziemny Krąg</option>
+  <option value="Łowca androidów">Łowca androidów</option>
+  <option value="Człowiek z blizną">Człowiek z blizną</option>
+  <option value="Seksmisja">Seksmisja</option>
+</select>
+</label></p>
 	
 <p>
  <input type = "submit" value = "Wyślij">
