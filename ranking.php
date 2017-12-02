@@ -70,13 +70,14 @@ window.addEventListener("load", start);
   </div>
   <nav>
   <ul>
-  	<li><a href="index.html">Start</a></li>
-  	<li><a href="najnowsze.html">Najnowsze recenzje</a></li>
-  	<li><a href="dodaj.html">Dodaj recenzję</a></li>
-	<li><a href="formularz.html">Dołącz do grona kinomaniaków !</a></li>
+  	<li><a href="index.php">Start</a></li>
+  	<li><a href="najnowsze.php">Najnowsze recenzje</a></li>
+  	<li><a href="dodaj.php">Dodaj recenzję</a></li>
+	<li><a href="formularz.php">Dołącz do grona kinomaniaków !</a></li>
 	</ul>
 	</nav>
 
+<form method = "post" action = "cookies.php">  
   Kolor tła:<select onchange="changeBackground(this);" id="tlo" name="tlo">
 	<option selected>#ddd</option>
     <option>lightblue</option>
@@ -95,6 +96,24 @@ window.addEventListener("load", start);
 	<option>Impact</option>
 	<option>Courier New</option>
   </select>
+<input type="submit" name="submitstyle" value="Zapisz styl">  
+</form>
+
+  <?php
+	if(isset($_COOKIE["tlo"]) || isset($_COOKIE["tekst"]) || isset($_COOKIE["czcionka"]))
+	{
+		$styleBlock = sprintf('
+			<style type="text/css">
+				body {
+				background-color:%s;
+				color:%s;
+				font-family:%s;
+				}
+			</style>
+		', $_COOKIE["tlo"], $_COOKIE["tekst"], $_COOKIE["czcionka"]);
+		echo $styleBlock;
+	}
+  ?>
  
 <h2>Ranking filmów</h2>
 <input id="button" type="submit" value="Pokaż oceny"/><p id="test"></p>

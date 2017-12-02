@@ -81,14 +81,13 @@
     </head>
     <body>
         <div class="confirm">
-            <?php
-                echo("Użytkowniku <b><i>".$user."</i></b>! Twoja recenzja została dodana!<br /><br />");
-                echo("Tytuł filmu: <b>".$title."</b><br />");
-                echo('Treść recenzji: '.$review)."<br />";
-                echo('Użytych znaków: '.strlen($review)."<br />");
-                echo('Wybrane kategorie: <br />');
+                Użytkowniku <b><i><?php $user ?></i></b>! Twoja recenzja została dodana!<br /><br />
+                Tytuł filmu: <b><?php $title ?></b><br />
+                Treść recenzji: <?php $review ?><br />
+                Użytych znaków: <?php strlen($review)?><br />
+                Wybrane kategorie: <br />
                 
-                $category = $_POST['category'];
+                <?php $category = $_POST['category']; 
 
 
                 foreach ($category as $name){ 
@@ -103,7 +102,7 @@
                 for($i=0;$i<3;$i++){
                     echo($filmy[$category[$i%count($category)]][$i].'<br />');
                 }
-            ?>
+                ?>
         </div>
     </body>
 </html>

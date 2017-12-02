@@ -1,3 +1,15 @@
+<?php
+	session_start();
+	setcookie('idsesji', session_id());
+
+	function logout(){
+		unset($_SESSION['login']);
+		unset($_SESSION['pass']);
+	}
+	if(isset($_GET['wyloguj']))
+		logout();
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -7,20 +19,11 @@
   <meta name="description" content="Recenzje filmów">
   <meta name="keywords" content="Film, ranking, recenzja, premiery">
   <link rel = "stylesheet" type = "text/css" href = "style/styles.css">
-  <script src="js/script.js"></script>
+  <!--<script src="js/script.js"></script>-->
 
   <script src="js/dom3.js"></script>
   
   <style type = "text/css">
-	body
-	{
-		background-image: url(img/bg.jpg);
-		background-position: bottom right;
-		background-repeat: repeat;
-		background-attachment: fixed;
-		background-color: #ddd;
-		background-origin: content-box;
-	}
 	#kula
 	{
 		transition: transform 1s;
@@ -151,17 +154,34 @@
 <p id="zegar"></p>
 <div id='topmain'>
   <h1>Recenzje filmów</h1>
-  <p id="imie">Witaj na naszej witrynie! Tutaj ocenisz każdy film</p>
-  </div>
+  <p id="imie"><?php if(isset($_SESSION['login'])) echo $_SESSION['login'].', w'; else echo 'W' ?>itaj na naszej witrynie! Tutaj ocenisz każdy film</p>
+</div><br/>
+
+
+<div <?php if(isset($_SESSION['login'])) echo 'style="display: none"'; ?>>
+ 	<form method="POST" action="logowanie.php">
+	  Login: <input type="text" name="login"/>
+	  Hasło: <input type="password" name="pass"/>
+	  <input type="submit" value="Zaloguj się"/>
+  	</form>
+</div>
+
+<div <?php if(!isset($_SESSION['login'])) echo 'style="display: none"'; ?>>
+	<a href="index.php?wyloguj=true">Wyloguj się</a>
+</div>
+ 
+
   <nav>
 	<ul>
-  <li><a href="ranking.html">Ranking filmów</a></li>
-  <li><a href="najnowsze.html">Najnowsze recezje</a></li>
-  <li><a href="dodaj.html">Dodaj recenzję</a></li>
-  <li><a href="formularz.html">Dołącz do grona kinomaniaków !</a></li>
+  <li><a href="ranking.php">Ranking filmów</a></li>
+  <li><a href="najnowsze.php">Najnowsze recezje</a></li>
+  <li <?php if(!isset($_SESSION['login'])) echo 'style="display: none"'; ?>>
+  	<a href="dodaj.php">Dodaj recenzję</a></li>
+  <li <?php if(isset($_SESSION['login'])) echo 'style="display: none"'; ?>><a href="formularz.php">Dołącz do grona kinomaniaków !</a></li>
 	</ul>
   </nav>
 
+<form method = "post" action = "cookies.php">  
   Kolor tła:<select onchange="changeBackground(this);" id="tlo" name="tlo">
 	<option selected>#ddd</option>
     <option>lightblue</option>
@@ -179,7 +199,25 @@
     <option>Arial</option>
 	<option>Impact</option>
 	<option>Courier New</option>
-  </select>  
+  </select>
+<input type="submit" name="submitstyle" value="Zapisz styl">  
+</form>  
+  
+  <?php
+	if(isset($_COOKIE["tlo"]) || isset($_COOKIE["tekst"]) || isset($_COOKIE["czcionka"]))
+	{
+		$styleBlock = sprintf('
+			<style type="text/css">
+				body {
+				background-color:%s;
+				color:%s;
+				font-family:%s;
+				}
+			</style>
+		', $_COOKIE["tlo"], $_COOKIE["tekst"], $_COOKIE["czcionka"]);
+		echo $styleBlock;
+	}
+  ?>
 	
 	<a href="mailto:recenzje@filmow.com">Kontakt</a><br />
 	
